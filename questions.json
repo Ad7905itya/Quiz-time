@@ -1,0 +1,47 @@
+[
+    {
+        "Question": "Which of the following colors contain equal amount of RBG?",
+        "Option1": "White",
+        "Option2": "Gray",
+        "Option3": "Black",
+        "Option4": "All of the above",
+        "Answer": 4,
+        "id": 0
+    },
+    {
+        "Question": "What is the effect of the <b> tag?",
+        "Option1": "it converts the text within it to bold font.",
+        "Option2": "it is used to write black-colored font.",
+        "Option3": "it is used to change the font size.",
+        "Option4": "None of the above",
+        "Answer": 1,
+        "id": 1
+    },
+    {
+        "Question": "What is the function of the HTML style attribute?",
+        "Option1": "It is used to add styles to an HTMl element",
+        "Option2": "It is used to uniquely identify some specific styles of some element",
+        "Option3": "Both A and B",
+        "Option4": "None of the above",
+        "Answer": 1,
+        "id": 2
+    },
+    {
+        "Question": "What is the correct syntax to write an HTML comment?",
+        "Option1": "<p>&lt;!--Comment--&gt;</p>",
+        "Option2": " //Comment",
+        "Option3": "#Comment",
+        "Option4": " /*Comment*/",
+        "Answer": 1,
+        "id": 3
+    },
+    {
+        "Question": "What is the select tag used for?",
+        "Option1": "Creates a combo box.",
+        "Option2": "Select some attributes and change their style.",
+        "Option3": "Change text font.",
+        "Option4": "None of the above.",
+        "Answer": 1,
+        "id": 4
+    }
+]
