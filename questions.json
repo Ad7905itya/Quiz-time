@@ -28,7 +28,7 @@
     },
     {
         "Question": "What is the correct syntax to write an HTML comment?",
-        "Option1": "<p>&lt;!--Comment--&gt;</p>",
+        "Option1": "&lt;!--Comment--&gt;",
         "Option2": " //Comment",
         "Option3": "#Comment",
         "Option4": " /*Comment*/",

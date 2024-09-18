@@ -153,6 +153,8 @@ nav{
     width: 100%;
     text-align: left;
     cursor: pointer;
+    color: black;
+    position: relative;
     border: 3px solid rgba(217, 217, 217, 1);
 }
  
@@ -170,8 +172,29 @@ audio{
     color: var(--btn-color);
     border: none;
     cursor: pointer;
+    text-transform: capitalize;
+    font-weight: 700;
 }
 
 .btn-next:hover{
     text-decoration: underline;
+}
+
+.Correct{
+    border: 3px solid hsla(122, 100%, 32%);
+}
+
+.Incorrect{
+    border: 3px solid rgb(197, 13, 0,0.6);
+}
+
+.display-icon{
+    position: absolute;
+    right: 35px;
+    top: 10px;
+}
+
+.stat{
+    position: absolute;
+    right: 80px;
 }
