@@ -53,6 +53,10 @@ btn.addEventListener('click', () => {
     }
     startQuiz(AvailableQuestion);
     a = 30;
+    startTimer();
+    if(a == 0){
+        stopInterval();
+    }
 })
 
 Questions()
@@ -70,11 +74,7 @@ function dongWrong() {
 }
 
 
-
-
-
-let a = 30;
-const stopTimer = setInterval(()=>{
+function getTimer(){
     a--;
     if (a <= 15) {
         document.documentElement.style.setProperty('--timer-bg-color', 'rgba(197, 177, 0, 0.43)');
@@ -97,10 +97,16 @@ const stopTimer = setInterval(()=>{
     if (a == 0) {
         stopInterval();
     }
-}, 1000);
+}
+
+let a = 30;
+let stopTimer = null;
+function startTimer(){
+    stopTimer = setInterval(getTimer, 1000);       
+}
 
 function stopInterval() {
     clearInterval(stopTimer);
     timer.innerText = '00:00'
 }
-
+startTimer();
