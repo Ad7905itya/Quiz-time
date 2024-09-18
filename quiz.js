@@ -3,6 +3,7 @@ const audioBox = document.querySelector('.audio');
 const QuestionBox = document.querySelector('.question-box');
 const options = document.querySelectorAll('.option');
 const timer = document.querySelector('.timer span');
+const btn = document.querySelector('.btn-next');
 turn0 = true;
 
 
@@ -24,6 +25,40 @@ audioBox.addEventListener('click', () => {
     }
 })
 
+let currentQuestion = {};
+let AvailableQuestion = [];
+let score = 0;
+
+async function Questions() {
+    let response = await fetch('questions.json');
+    let questions = await response.json();
+    startQuiz(questions);
+}
+
+function startQuiz(question) {
+    AvailableQuestion = [...question];
+    let indx = Math.floor(Math.random() * AvailableQuestion.length);
+    currentQuestion = AvailableQuestion[indx];
+    QuestionBox.innerText = currentQuestion.Question;
+    options.forEach((option) => {
+        let number = option.dataset.number;
+        option.innerHTML = currentQuestion['Option' + number];
+    })
+    AvailableQuestion.splice(indx, 1);
+}
+
+btn.addEventListener('click', () => { 
+    if (AvailableQuestion.length === 0) {
+        return location.assign('Result.html');
+    }
+    startQuiz(AvailableQuestion);
+    a = 30;
+})
+
+Questions()
+
+
+
 function dingCorrect() {
     let sound = document.querySelector('#correct');
     sound.play();
@@ -39,14 +74,18 @@ function dongWrong() {
 
 
 let a = 30;
-function setTimer() {
+const stopTimer = setInterval(()=>{
     a--;
-    if(a <= 15){
+    if (a <= 15) {
         document.documentElement.style.setProperty('--timer-bg-color', 'rgba(197, 177, 0, 0.43)');
         document.documentElement.style.setProperty('--body-bg-color', 'rgba(228, 229, 199, 1)');
         document.documentElement.style.setProperty('--btn-color', 'rgba(197, 136, 0, 1)');
+    }else{
+        document.documentElement.style.setProperty('--timer-bg-color', 'rgba(0, 163, 5, 0.48)');
+        document.documentElement.style.setProperty('--body-bg-color', '#CCE2C2');
+        document.documentElement.style.setProperty('--btn-color', 'hsla(122, 100%, 32%)');
     }
-    if(a <= 5){
+    if (a <= 5) {
         document.documentElement.style.setProperty('--timer-bg-color', 'rgba(197, 12, 0, 0.43)');
         document.documentElement.style.setProperty('--body-bg-color', 'rgba(219, 173, 173, 1)');
         document.documentElement.style.setProperty('--btn-color', 'rgba(197, 0, 0, 1)');
@@ -58,9 +97,7 @@ function setTimer() {
     if (a == 0) {
         stopInterval();
     }
-}
-
-const stopTimer = setInterval(setTimer, 1000);
+}, 1000);
 
 function stopInterval() {
     clearInterval(stopTimer);
