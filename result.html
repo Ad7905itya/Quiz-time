@@ -7,43 +7,7 @@
     <title>Quiz Time | Result</title>
 </head>
 
-<body id="capture-area">
-  
-    <button id="capture">Capture and Share</button>
-    <div style="padding: 20px; background-color: lightblue;">
-        <h1>This is an example area to capture.</h1>
-        <p>Try capturing and sharing this content!</p>
-    </div>
-
-    <script>
-        document.getElementById("capture").addEventListener("click", function() {
-            // Use html2canvas to capture the area
-            html2canvas(document.querySelector("#capture-area")).then(canvas => {
-                // Convert the canvas to a blob for sharing
-                canvas.toBlob(function(blob) {
-                    const file = new File([blob], "screenshot.png", { type: "image/png" });
-
-                    // Check if Web Share API is supported
-                    if (navigator.canShare && navigator.canShare({ files: [file] })) {
-                        // Use Web Share API to share the screenshot
-                        navigator.share({
-                            files: [file],
-                            title: 'Screenshot',
-                            text: 'Check out this screenshot!'
-                        }).then(() => {
-                            console.log('Screenshot shared successfully!');
-                        }).catch((error) => {
-                            console.error('Error sharing screenshot:', error);
-                        });
-                    } else {
-                        alert("Web Share API is not supported on your browser.");
-                    }
-                });
-            });
-        });
-    </script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<body>
 
 </body>
 
