@@ -1,14 +1,15 @@
-const audio = document.createElement('img');
-const audioBox = document.querySelector('.audio');
-const QuestionBox = document.querySelector('.question-box');
-const options = document.querySelectorAll('.option');
-const timer = document.querySelector('.timer span');
-const btn = document.querySelector('.btn-next');
-const scoreBox = document.querySelector('.score');
-turn0 = true;
+try{
+    const audioBox = document.querySelector('.audio');
+    const audio = document.createElement('img');
+    const QuestionBox = document.querySelector('.question-box');
+    const options = document.querySelectorAll('.option');
+    const timer = document.querySelector('.timer span');
+    const btn = document.querySelector('.btn-next');
+    const scoreBox = document.querySelector('.score');
+    let turn0 = true;
 
 audio.src = 'images/🦆 icon _Volume Up_.svg';
-audioBox.append(audio);
+audioBox.appendChild(audio);
 audioBox.addEventListener('click', () => {
     let sound1 = document.querySelector('#correct');
     let sound2 = document.querySelector('#incorrect');
@@ -149,7 +150,7 @@ startTimer();
 
 btn.addEventListener('click', () => {
     if (AvailableQuestion.length === 0) {
-        return location.assign('result.html');
+        return location.assign(`result.html`);
     }
     next += 1;
     scoreBox.innerHTML = `${next} / ${totalQuestions.length}`;
@@ -162,3 +163,6 @@ btn.addEventListener('click', () => {
         option.disabled = false;
     })
 })
+}catch(err){
+    console.log(err);
+}

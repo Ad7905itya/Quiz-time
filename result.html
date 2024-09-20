@@ -5,10 +5,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Time | Result</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            flex-direction: column;
+        }
+
+        .heading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 24px;
+        }
+
+        .img-heading {
+            width: 300px;
+            height: 150px;
+        }
+
+        h2 {
+            margin-top: -20px;
+            margin-left: 20px;
+        }
+
+        .result-pie-graph {
+            margin-top: 50px;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotateY(180deg)rotateZ(325deg);
+            background: conic-gradient(rgba(53, 189, 58, 1) 300deg, rgba(255, 122, 122, 1) 0deg);
+        }
+
+        .pie-circle {
+            width: 180px;
+            height: 180px;
+            background-color: #fff;
+            border-radius: 50%;
+            transform: rotateY(-180deg)rotateZ(325deg);
+            display: inherit;
+            align-items: inherit;
+            justify-content: inherit;
+        }
+
+        .pie-circle h2 {
+            margin: 0;
+        }
+
+        .correct-result {
+            position: relative;
+            top: -120px;
+            left: -45px;
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+        }
+        .correct-result img,.incorrect-result img{
+            width: 70px;
+        }
+
+        .incorrect-result {
+            position: relative;
+            top: -280px;
+            right: -225px;
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+        }
+        .correct-result span,.incorrect-result span{
+            font-size: 24px;
+        }
+        .correct-result span{
+            position: relative;
+            left: -15px;
+            top: 5px;
+            font-weight: 600;
+        }
+        .incorrect-result span{
+            position: relative;
+            left: 50px;
+            top: 5px;
+            font-weight: 600;
+        }
+    </style>
+    <script src="result.js" type="module"></script>
 </head>
 
 <body>
+    <div class="heading">
+        <img class="img-heading" src="images/Group 4.svg" alt="Group">
+        <h2>Result</h2>
+    </div>
 
+    <div class="graph-result-container">
+        <div class="result-pie-graph">
+            <div class="pie-circle">
+                <h2>22/25</h2>
+            </div>
+        </div>
+        <div class="correct-result">
+            <img src="images/Vector 4.svg" alt="">
+            <span>70%</span>
+        </div>
+        <div class="incorrect-result">
+            <img src="images/Vector 5.svg" alt="">
+            <span>30%</span>
+        </div>
+    </div>
 </body>
-
 </html>
