@@ -6,9 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Time | Result</title>
     <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic"
+        rel="stylesheet" />
     <style>
         body {
             flex-direction: column;
+            font-family: 'Poppins', sans-serif;
         }
 
         .heading {
@@ -28,6 +32,10 @@
             margin-left: 20px;
         }
 
+        .graph-result-container {
+            position: relative;
+        }
+
         .result-pie-graph {
             margin-top: 50px;
             width: 250px;
@@ -36,16 +44,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transform: rotateY(180deg)rotateZ(325deg);
+            transform: rotateY(180deg);
             background: conic-gradient(rgba(53, 189, 58, 1) 300deg, rgba(255, 122, 122, 1) 0deg);
         }
 
         .pie-circle {
             width: 180px;
             height: 180px;
-            background-color: #fff;
+            background-color: #f5f5f5;
             border-radius: 50%;
-            transform: rotateY(-180deg)rotateZ(325deg);
+            transform: rotateY(-180deg);
             display: inherit;
             align-items: inherit;
             justify-content: inherit;
@@ -56,45 +64,117 @@
         }
 
         .correct-result {
-            position: relative;
-            top: -120px;
+            position: absolute;
+            top: 160px;
             left: -45px;
             display: flex;
             flex-direction: column;
             width: 50%;
         }
-        .correct-result img,.incorrect-result img{
+
+        img {
             width: 70px;
         }
 
         .incorrect-result {
-            position: relative;
-            top: -280px;
-            right: -225px;
+            position: absolute;
+            top: 160px;
+            right: -100px;
             display: flex;
             flex-direction: column;
             width: 50%;
         }
-        .correct-result span,.incorrect-result span{
+
+        .correct-result span,
+        .incorrect-result span {
             font-size: 24px;
         }
-        .correct-result span{
+
+        .correct-result span {
             position: relative;
             left: -15px;
             top: 5px;
             font-weight: 600;
         }
-        .incorrect-result span{
+
+        .incorrect-result span {
             position: relative;
             left: 50px;
             top: 5px;
             font-weight: 600;
         }
-        .btn-retry{
-            color: #fff;
+
+        .btn-retry {
+            margin-top: 20px;
+        }
+
+        .statement {
+            margin-top: 80px;
+            font-size: 25px;
+            font-weight: 700;
+        }
+
+        @media (max-width: 670px) {
+            .img-heading {
+                width: 220px;
+            }
+
+            .heading h2 {
+                font-size: 18px;
+            }
+
+            .result-pie-graph {
+                width: 160px;
+                height: 160px;
+            }
+
+            .pie-circle {
+                width: 100px;
+                height: 100px;
+            }
+
+            .pie-circle h2 {
+                font-size: 14px;
+            }
+
+            img {
+                width: 40px;
+                margin: auto;
+            }
+
+            .correct-result {
+                top: 125px;
+                left: -45px;
+            }
+
+            .incorrect-result {
+                top: 125px;
+                right: -45px;
+            }
+
+            .correct-result span,
+            .incorrect-result span {
+                font-size: 12px;
+                text-align: center;
+            }
+
+            .incorrect-result span {
+                text-align: start;
+            }
+
+            .statement {
+                font-size: 18px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .statement {
+                font-size: 14px;
+            }
         }
     </style>
-    <script src="result.js" type="module"></script>
+    <script src="result.js" defer></script>
 </head>
 
 <body>
@@ -119,6 +199,9 @@
         </div>
     </div>
 
-    <button class="btn btn-retry"><< retry</button>
+    <p class="statement"></p>
+    <button class="btn btn-retry">
+        <<< retry</button>
 </body>
+
 </html>

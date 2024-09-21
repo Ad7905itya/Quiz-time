@@ -1,12 +1,11 @@
-try{
-    const audioBox = document.querySelector('.audio');
-    const audio = document.createElement('img');
-    const QuestionBox = document.querySelector('.question-box');
-    const options = document.querySelectorAll('.option');
-    const timer = document.querySelector('.timer span');
-    const btn = document.querySelector('.btn-next');
-    const scoreBox = document.querySelector('.score');
-    let turn0 = true;
+const audioBox = document.querySelector('.audio');
+const audio = document.createElement('img');
+const QuestionBox = document.querySelector('.question-box');
+const options = document.querySelectorAll('.option');
+const timer = document.querySelector('.timer span');
+const btn = document.querySelector('.btn-next');
+const scoreBox = document.querySelector('.score');
+let turn0 = true;
 
 audio.src = 'images/🦆 icon _Volume Up_.svg';
 audioBox.appendChild(audio);
@@ -31,11 +30,13 @@ let AvailableQuestion = [];
 let score = 0;
 let acceptingAnswers = true;
 let totalQuestions;
+
 async function Questions() {
     let response = await fetch('questions.json');
     let questions = await response.json();
     startQuiz(questions);
     totalQuestions = questions;
+    localStorage.setItem('totalQuestion', totalQuestions.length);
 }
 
 function startQuiz(question) {
@@ -71,6 +72,7 @@ options.forEach((option) => {
         let CheckAnswer = currentQuestion.Answer === idx ? "Correct" : "Incorrect";
         if (CheckAnswer == "Correct") {
             score++;
+            localStorage.setItem('score', score);
             stopInterval();
             dingCorrect();
             const CorrectImg = document.createElement('img');
@@ -79,6 +81,7 @@ options.forEach((option) => {
             option.append(CorrectImg);
         } else {
             score;
+            localStorage.setItem('score', score);
             stopInterval();
             dongWrong();
             const statement = document.createElement('span');
@@ -87,7 +90,7 @@ options.forEach((option) => {
             const wrongImg = document.createElement('img');
             wrongImg.src = "images/wrong.svg";
             wrongImg.classList.add('display-icon');
-            option.append(statement,wrongImg);
+            option.append(statement, wrongImg);
             setTimeout(() => {
                 options.forEach((option) => {
                     if (option.innerHTML == currentQuestion['Option' + currentQuestion['Answer']]) {
@@ -98,7 +101,7 @@ options.forEach((option) => {
                         option.append(CorrectImg);
                     }
                 })
-            }, 1000);
+            }, 400);
         }
         e.target.classList.add(CheckAnswer);
         for (let i = 0; i < 4; i++) {
@@ -163,6 +166,3 @@ btn.addEventListener('click', () => {
         option.disabled = false;
     })
 })
-}catch(err){
-    console.log(err);
-}
