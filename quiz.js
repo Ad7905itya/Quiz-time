@@ -75,6 +75,7 @@ options.forEach((option) => {
             localStorage.setItem('score', score);
             stopInterval();
             dingCorrect();
+            btn.disabled = false;
             const CorrectImg = document.createElement('img');
             CorrectImg.src = "images/correct.svg";
             CorrectImg.classList.add('display-icon');
@@ -84,6 +85,7 @@ options.forEach((option) => {
             localStorage.setItem('score', score);
             stopInterval();
             dongWrong();
+            btn.disabled = false;
             const statement = document.createElement('span');
             statement.innerText = 'You Choice';
             statement.classList.add('stat')
@@ -136,6 +138,11 @@ function getTimer() {
         options.forEach((option) => {
             option.disabled = true;
         })
+    }
+    if(a != 1){
+        btn.disabled = true;
+    }else{
+        btn.disabled = false;
     }
 }
 
